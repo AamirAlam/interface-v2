@@ -22,7 +22,8 @@ import { EnterAmounts } from './containers/EnterAmounts';
 import { SelectPair } from './containers/SelectPair';
 import { SelectRange } from './containers/SelectRange';
 import { ReactComponent as SettingsIcon } from 'assets/images/SettingsIcon.svg';
-import { ReactComponent as ArrowDownIcon } from 'assets/images/arrowDown.svg';
+import { ReactComponent as WarningIcon } from 'assets/images/warningIcon.svg';
+import { ReactComponent as LockIcon } from 'assets/images/lockIcon.svg';
 
 import { Currency, Percent } from '@uniswap/sdk-core';
 
@@ -41,24 +42,24 @@ import {
   PriceFormatToggler,
 } from './components/PriceFomatToggler';
 import { AddLiquidityButton } from './containers/AddLiquidityButton';
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'react-feather';
 import { PoolState } from 'hooks/v3/usePools';
-import { RouterGuard } from './routing/router-guards';
-import { InitialPrice } from './containers/InitialPrice';
+
 import { useAppDispatch } from 'state/hooks';
-// import SettingsTab from "components/Settings";
-import { Aftermath } from './containers/Aftermath';
-import { useWalletModalToggle } from 'state/application/hooks';
-import { isMobileOnly } from 'react-device-detect';
-import { ZERO_PERCENT } from 'constants/v3/misc';
+
 import { useUserSlippageTolerance } from 'state/user/hooks';
 import { JSBI } from '@uniswap/sdk';
 import { currencyId } from 'utils/v3/currencyId';
 import { Box } from '@material-ui/core';
-import { LinkButton, StyledLabel } from '../Common/styledElements';
-import RateToggle from 'components/RateToggle';
+import {
+  StyledWarningButton,
+  LinkButton,
+  OverlayCard,
+  StyledLabel,
+  StyledWarningBox,
+} from '../Common/styledElements';
+// import RateToggle from 'components/RateToggle';
 import { useTranslation } from 'react-i18next';
-import CurrencyInputV3 from 'components/CurrencyInputV3';
+// import CurrencyInputV3 from 'components/CurrencyInputV3';
 import { isSupportedNetwork } from 'utils';
 import SettingsModal from 'components/SettingsModal';
 
@@ -437,6 +438,76 @@ export function NewAddLiquidityPage() {
           priceFormat={PriceFormats.TOKEN}
           backStep={stepInitialPrice ? 1 : 0}
         />
+
+        {/* <StyledWarningBox>
+          <Box height={56} className='flex justify-around items-center'>
+            <WarningIcon />
+            <Box width={'85%'}>
+              <StyledLabel fontSize='12px' color='#fdd835'>
+                Your position is out of range and will not earn fees or be used
+                in trades until the market price moves into your range.{' '}
+              </StyledLabel>
+            </Box>
+          </Box>
+        </StyledWarningBox>
+
+
+        <StyledWarningBox>
+          <Box
+            mt={1.5}
+            // padding={2}
+            className='flex flex-col justify-center '
+            width={'100%'}
+            height={'140px'}
+          >
+            <Box ml={1.5} className='flex items-center'>
+              <WarningIcon />
+
+              <StyledLabel className='ml-1' fontSize='14px' color='#fdd835'>
+                Efficiency Comparison
+              </StyledLabel>
+            </Box>
+
+            <Box ml={1.5} width='85%' mt={1}>
+              <StyledLabel fontSize='12px' color='#fdd835'>
+                Full range positions may earn less fees than concentrated
+                positions. Learn more{' '}
+                <a href='#' style={{ color: 'inherit' }}>
+                  here
+                </a>
+              </StyledLabel>
+            </Box>
+
+            <Box ml={1.5} mt={2.5} mb={1}>
+              <StyledWarningButton>
+                <StyledLabel fontSize='13px' color='#12131a'>
+                  I Understand
+                </StyledLabel>
+              </StyledWarningButton>
+            </Box>
+          </Box>
+        </StyledWarningBox>
+
+
+        <OverlayCard>
+          <Box
+            className='flex flex-col justify-center items-center'
+            width={'100%'}
+            height={'107px'}
+          >
+            <LockIcon />
+            <Box width={'75%'}>
+              <StyledLabel
+                className='text-center'
+                fontSize='12px'
+                color='#c7cad9'
+              >
+                The market price is outside your specified price range.
+                Single-asset deposit only.
+              </StyledLabel>
+            </Box>
+          </Box>
+        </OverlayCard> */}
 
         <Box className='flex justify-between items-center' mt={2.5} mb={2.5}>
           Deposit Amounts

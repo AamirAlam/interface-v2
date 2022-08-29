@@ -125,7 +125,22 @@ export const StyledEmptyDotCircle = styled.div`
 `;
 
 export const StyledWarningBox = styled(Box)`
+  opacity: 0.96;
+  border-radius: 12px;
+
+  background-color: #4b3625;
+`;
+export const StyledWarningButton = styled(Box)`
+  width: 110px;
+  height: 27px;
+  padding: 5px 10px 6px;
+  border-radius: 8px;
+  background-color: #fdd835;
+  cursor: pointer;
+`;
+
+export const OverlayCard = styled(Box)`
+  opacity: 0.9;
   border-radius: 12px;
   background-color: #282d3d;
-  background-color: #4b3625;
 `;
